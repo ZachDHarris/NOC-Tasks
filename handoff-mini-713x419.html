@@ -1,4 +1,4 @@
-<div id="hb-mini" style="width:299px;height:450px;overflow:hidden;">
+<div id="hb-mini" style="width:713px;height:419px;overflow:hidden;">
 <style>
   #hb-mini {
     --hb-bg: #0F1319;
@@ -16,17 +16,17 @@
     font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 14px;
     border-radius: 8px;
   }
   #hb-mini * { box-sizing: border-box; }
   #hb-mini .hb-eyebrow {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--hb-text-faint);
-    margin: 0 0 4px;
+    margin: 0 0 8px;
   }
   #hb-mini .hb-daynav {
     display: flex;
@@ -35,46 +35,49 @@
     background: var(--hb-panel);
     border: 1px solid var(--hb-border);
     border-radius: 6px;
-    padding: 6px 8px;
-    margin-bottom: 8px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
   }
   #hb-mini .hb-daynav button {
     background: none;
     border: none;
     color: var(--hb-text-dim);
-    font-size: 14px;
+    font-size: 18px;
     cursor: pointer;
-    padding: 0 6px;
+    padding: 0 8px;
     line-height: 1;
   }
   #hb-mini .hb-daynav button:hover { color: var(--hb-text); }
   #hb-mini .hb-daylabel {
     font-family: "Oswald", sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 17px;
     text-transform: uppercase;
     letter-spacing: 0.02em;
   }
   #hb-mini .hb-daylabel .hb-today-tag {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 8px;
+    font-size: 9px;
     color: var(--hb-night);
-    margin-left: 5px;
+    margin-left: 6px;
     letter-spacing: 0.05em;
   }
   #hb-mini .hb-cards {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    overflow-y: auto;
+    flex-direction: row;
+    gap: 10px;
+    overflow: hidden;
     flex: 1;
   }
   #hb-mini .hb-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     background: var(--hb-panel);
     border: 1px solid var(--hb-border);
     border-left: 3px solid var(--hb-c, var(--hb-text-faint));
     border-radius: 6px;
-    padding: 7px 9px;
+    padding: 10px 12px;
   }
   #hb-mini .hb-card.day { --hb-c: var(--hb-day); }
   #hb-mini .hb-card.evening { --hb-c: var(--hb-evening); }
@@ -82,17 +85,17 @@
   #hb-mini .hb-card-head {
     display: flex;
     align-items: baseline;
-    gap: 5px;
-    margin-bottom: 4px;
+    gap: 6px;
+    margin-bottom: 8px;
   }
   #hb-mini .hb-dot {
-    width: 6px; height: 6px; border-radius: 50%;
+    width: 8px; height: 8px; border-radius: 50%;
     background: var(--hb-c, var(--hb-text-faint));
     flex-shrink: 0;
   }
   #hb-mini .hb-card-head h3 {
     font-family: "Oswald", sans-serif;
-    font-size: 12px;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.02em;
     margin: 0;
@@ -100,15 +103,24 @@
   }
   #hb-mini .hb-hours {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 8.5px;
+    font-size: 10px;
     color: var(--hb-text-faint);
+  }
+  #hb-mini .hb-rows {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1;
   }
   #hb-mini .hb-row {
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
-    padding: 2px 0;
+    align-items: baseline;
+    font-size: 14px;
+    padding: 8px 0;
+    border-top: 1px solid var(--hb-border);
   }
+  #hb-mini .hb-row:first-child { border-top: none; }
   #hb-mini .hb-task { color: var(--hb-text-dim); }
   #hb-mini .hb-name { font-weight: 600; text-align: right; }
 </style>
@@ -162,7 +174,7 @@
       }).join("");
       card.innerHTML =
         '<div class="hb-card-head"><span class="hb-dot"></span><h3>' + shift.label +
-        '</h3><span class="hb-hours">' + shift.hours + "</span></div>" + rowsHtml;
+        '</h3><span class="hb-hours">' + shift.hours + '</span></div><div class="hb-rows">' + rowsHtml + "</div>";
       cards.appendChild(card);
     });
   }
